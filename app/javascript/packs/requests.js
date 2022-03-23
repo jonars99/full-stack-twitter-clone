@@ -1,12 +1,15 @@
 import $ from 'jquery';
 
-var createUser = function (username, email, password) {
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
+export var createUser = function (username, email, password) {
   var request = {
     type: 'POST',
     url: 'api/users',
-    headers: {
-      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-    },
     data: {
       user: {
         username: username,
@@ -24,5 +27,3 @@ var createUser = function (username, email, password) {
 
   $.ajax(request);
 };
-
-createUser('testuser2', 'user2@test.com', 'testpassword2');
