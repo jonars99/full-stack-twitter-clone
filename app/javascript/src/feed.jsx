@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import { getTweets, postTweet } from '../packs/requests';
 
 const Feed = () => {
 
-  getTweets(function (response) {
-    console.log(response);
+  const [newTweet, setNewTweet] = useState("");
+
+  const listOfTweets = function (response) {
     var allTweets = response.tweets.map(function(tweet) {
       var tweets =
       '<div class="border">' +
@@ -16,18 +17,21 @@ const Feed = () => {
       return tweets;
     })
     $('#twitterFeed').html(allTweets);
-  });
+  }
 
   const handleTweet = function (event) {
     event.preventDefault();
-    const content = $('#tweetInput').val();
-    console.log(content);
-    postTweet(content, function (response) {
-      console.log('callback...');
-      var tweet = response.tweet
-      console.log(response.tweet);
-    });
+    var content = $('#tweetInput').val(); 
+    setNewTweet(content);
   }
+
+  useEffect(() => {
+    if (newTweet !== "") {
+      postTweet(newTweet, getTweets(listOfTweets));
+    }
+  }, [newTweet]);
+
+  getTweets(listOfTweets);
 
   return(
     <React.Fragment>
