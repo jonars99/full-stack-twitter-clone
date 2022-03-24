@@ -5,12 +5,8 @@ module Api
       user = User.find_by(id: 6)
       @tweet = user.tweets.new(tweet_params)
 
-      if @tweet.save 
-        render json: {
-          tweet: {
-            message: @tweet.message
-          }
-        }
+      if @tweet.save
+        render 'api/tweets/create'
       else 
         render json: {
           success: false

@@ -9,7 +9,14 @@ const Feed = () => {
     event.preventDefault();
     const content = $('#tweetInput').val();
     console.log(content);
-    postTweet(content);
+    postTweet(content, function (response) {
+      console.log('callback...');
+      var tweet = response.tweet
+      console.log(response.tweet);
+      var twitterPost = 
+        '<p>' + tweet.username + '</p><p>' + tweet.message + '</p><p>' + tweet.created_at.to_date + '</p>';
+      $('#twitterFeed').html(twitterPost);
+    });
   }
 
   return(
@@ -20,6 +27,7 @@ const Feed = () => {
           <textarea className="form-control" id="tweetInput"></textarea>
           <button type="submit" className="btn" onSubmit={handleTweet}>Tweet</button>
         </form>
+        <div id="twitterFeed"></div>
       </div>
     </React.Fragment>
   )

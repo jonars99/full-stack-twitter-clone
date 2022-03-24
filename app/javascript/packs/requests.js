@@ -6,7 +6,7 @@ $.ajaxSetup({
   }
 });
 
-//                  Create a User                  
+//                Create a User                  
 
 export var createUser = function (username, email, password) {
   var request = {
@@ -31,7 +31,7 @@ export var createUser = function (username, email, password) {
 
 //               Post Tweet
 
-export var postTweet = function (content) {
+export var postTweet = function (content, callback) {
   var request = {
     type: 'POST',
     url: 'api/tweets',
@@ -40,9 +40,7 @@ export var postTweet = function (content) {
         message: content
       }
     },
-    success: function(response) {
-      console.log(response);
-    },
+    success: callback,
     error: function (request, error) {
       console.log(request, error);
     }
