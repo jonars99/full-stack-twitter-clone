@@ -29,7 +29,7 @@ const Home = () => {
             <label htmlFor="passwordInput" className="form-label">Password</label>
             <input type="password" className="form-control" id="passwordInput" placeholder="password" required></input>
           </div>
-          <button type="submit" className="btn signup-btn" onSubmit={handleSubmit}>Sign up</button>
+          <button type="submit" className="btn" onSubmit={handleSubmit}>Sign up</button>
         </form>
       </div>
     </React.Fragment>
