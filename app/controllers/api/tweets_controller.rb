@@ -1,6 +1,11 @@
 module Api 
   class TweetsController < ApplicationController
 
+    def index 
+      @tweets = Tweet.all.order(created_at: :desc)
+      render 'api/tweets/index'
+    end
+
     def create 
       user = User.find_by(id: 6)
       @tweet = user.tweets.new(tweet_params)

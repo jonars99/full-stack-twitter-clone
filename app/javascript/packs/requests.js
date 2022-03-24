@@ -6,7 +6,9 @@ $.ajaxSetup({
   }
 });
 
-//                Create a User                  
+//____________________USER & SESSIONS__________________
+
+//___________________Create a User_____________________
 
 export var createUser = function (username, email, password) {
   var request = {
@@ -22,14 +24,32 @@ export var createUser = function (username, email, password) {
     success: function (response) {
       console.log(response);
     },
-    error: function (request, error) {
-      console.log(request, error);
+    error: function (request, errorMessage) {
+      console.log(request, errorMessage);
     }
   }
   $.ajax(request);
 };
 
-//               Post Tweet
+//__________________TWEETS______________________
+
+
+//________________Get Tweets____________________
+
+export var getTweets = function (callback) {
+  var request = {
+    type: 'GET',
+    url: 'api/tweets',
+    success: callback,
+    error: function (request, errorMessage) {
+      console.log(request, errorMessage)
+    }
+  }
+
+  $.ajax(request);
+}
+
+//_______________Post a Tweet___________________
 
 export var postTweet = function (content, callback) {
   var request = {
@@ -41,8 +61,8 @@ export var postTweet = function (content, callback) {
       }
     },
     success: callback,
-    error: function (request, error) {
-      console.log(request, error);
+    error: function (request, errorMessage) {
+      console.log(request, errorMessage);
     }
   }
   $.ajax(request);

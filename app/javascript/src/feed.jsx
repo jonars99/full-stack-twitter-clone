@@ -1,9 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import { postTweet } from '../packs/requests';
+import { getTweets, postTweet } from '../packs/requests';
 
 const Feed = () => {
+
+  getTweets(function (response) {
+    console.log(response);
+    var allTweets = response.tweets.map(function(tweet) {
+      var tweets =
+      '<div class="border">' +
+      '<p>' + tweet.username + '</p>' +
+      '<p>' + tweet.message + '</p>' +
+      '<p>' + tweet.created_at + '</p>';
+      return tweets;
+    })
+    $('#twitterFeed').html(allTweets);
+  });
 
   const handleTweet = function (event) {
     event.preventDefault();
@@ -13,9 +26,6 @@ const Feed = () => {
       console.log('callback...');
       var tweet = response.tweet
       console.log(response.tweet);
-      var twitterPost = 
-        '<p>' + tweet.username + '</p><p>' + tweet.message + '</p><p>' + tweet.created_at.to_date + '</p>';
-      $('#twitterFeed').html(twitterPost);
     });
   }
 
