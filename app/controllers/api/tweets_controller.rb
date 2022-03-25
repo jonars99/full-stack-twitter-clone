@@ -13,12 +13,19 @@ module Api
       if @tweet.save
         render 'api/tweets/create'
       else 
-        render json: {
-          success: false
-        }
-        puts @tweet.errors.to_yaml
+        render json: { success: false }
       end
+    end
 
+    def destroy
+      user = User.find_by(id: 6)
+      tweet = Tweet.find_by(id: params[:id])
+
+      if tweet and tweet.user == user and tweet.destroy
+        render json: { success: true }
+      else 
+        render json: { success: false }
+      end
     end
 
     private 

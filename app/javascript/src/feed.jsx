@@ -1,25 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { getTweets, postTweet } from '../packs/requests';
+import $ from 'jquery';
+import { getTweets, postTweet, deleteTweet } from '../packs/requests';
 
 const Feed = () => {
 
+  //    states
+
   const [tweets, setTweets] = useState([]);
   const [newTweet, setNewTweet] = useState("");
+
+  //    map tweets to state
 
   const listOfTweets = function (response) {
     setTweets(response.tweets.map(tweet => tweet));
   }
 
-  const handleTweet = function (event) {
+  //    handlers 
+
+  const postTweetHandler = function (event) {
     event.preventDefault();
     postTweet(newTweet);
     getTweets(listOfTweets);
   }
 
-  const tweetHandler = function (event) {
+  const tweetInputHandler = function (event) {
     setNewTweet(event.target.value);
   }
+
+  const deleteTweetHandler = function (event) {
+    var id = event.target.dataset.id;
+    deleteTweet(id);
+    getTweets(listOfTweets);
+  }
+
+  //   get tweets on page start up
 
   useEffect(() => {
     getTweets(listOfTweets);
@@ -29,16 +44,22 @@ const Feed = () => {
     <React.Fragment>
       <div className="col-6 m-auto my-5">
         <p>Feed page</p>
-        <form onSubmit={handleTweet}>
-          <textarea className="form-control" id="tweetInput" value={newTweet} onChange={tweetHandler}></textarea>
-          <button type="submit" className="btn" onSubmit={handleTweet}>Tweet</button>
+        <form onSubmit={postTweetHandler}>
+          <textarea 
+            className="form-control" 
+            id="tweetInput" 
+            value={newTweet} 
+            onChange={tweetInputHandler}>
+          </textarea>
+          <button type="submit" className="btn" onSubmit={postTweetHandler}>Tweet</button>
         </form>
         <div id="twitterFeed">
           {tweets.map(tweet => (
-            <div>
+            <div key={tweet.id}>
               <p>{tweet.username}</p>
               <p>{tweet.message}</p>
               <p>{tweet.created_at}</p>
+              <button className="btn" data-id={tweet.id} onClick={deleteTweetHandler}>delete</button>
             </div>
           ))}
         </div>

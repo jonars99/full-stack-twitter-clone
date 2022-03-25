@@ -3,6 +3,9 @@ import $ from 'jquery';
 $.ajaxSetup({
   headers: {
     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+  },
+  error: function (request, errorMessage) {
+    console.log(request, errorMessage)
   }
 });
 
@@ -23,9 +26,6 @@ export var createUser = function (username, email, password) {
     },
     success: function (response) {
       console.log(response);
-    },
-    error: function (request, errorMessage) {
-      console.log(request, errorMessage);
     }
   }
   $.ajax(request);
@@ -40,12 +40,8 @@ export var getTweets = function (callback) {
   var request = {
     type: 'GET',
     url: 'api/tweets',
-    success: callback,
-    error: function (request, errorMessage) {
-      console.log(request, errorMessage)
-    }
+    success: callback
   }
-
   $.ajax(request);
 }
 
@@ -60,10 +56,18 @@ export var postTweet = function (content, callback) {
         message: content
       }
     },
-    success: callback,
-    error: function (request, errorMessage) {
-      console.log(request, errorMessage);
-    }
+    success: callback
+  }
+  $.ajax(request);
+}
+
+//_______________Delete a Tweet__________________
+
+export var deleteTweet = function (id, callback) {
+  var request = {
+    type: 'DELETE',
+    url: 'api/tweets/' + id,
+    success: callback
   }
   $.ajax(request);
 }

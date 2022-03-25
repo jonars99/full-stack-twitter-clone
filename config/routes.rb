@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   #get '/:username' => 'static_pages#user'  user's tweets
 
   namespace :api do
-    post '/users'  => 'users#create'
-    get  '/tweets' => 'tweets#index'
-    post '/tweets' => 'tweets#create'
+    post '/users'    => 'users#create'
+    get  '/tweets'   => 'tweets#index'
+    post '/tweets'   => 'tweets#create'
+    delete '/tweets/:id' => 'tweets#destroy'
   end
   
 end
