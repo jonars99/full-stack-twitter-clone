@@ -11,9 +11,7 @@ module Api
           }
         }
       else 
-        render json: {
-          success: false
-        }
+        render json: { success: false }
         puts @user.errors.to_yaml
       end
     end

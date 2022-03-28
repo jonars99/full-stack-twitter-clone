@@ -5,18 +5,21 @@ import { createUser } from '../packs/requests';
 
 const Home = () => {
   
-  const handleSubmit = (event) => {
+  const handleSignUp = (event) => {
     event.preventDefault();
     const username = $('#usernameInput').val();
     const email = $('#emailInput').val();
     const password = $('#passwordInput').val();
-    createUser(username, email, password);
+    createUser(username, email, password, function () {
+      window.location.assign('/feed');
+      console.log('user created');
+    });
   }
 
   return(
     <React.Fragment>
       <div className="col-6 m-auto my-5">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSignUp}>
           <div>
             <label htmlFor="usernameInput" className="form-label">Username</label>
             <input type="text" className="form-control" id="usernameInput" placeholder="username" required></input>
@@ -29,7 +32,7 @@ const Home = () => {
             <label htmlFor="passwordInput" className="form-label">Password</label>
             <input type="password" className="form-control" id="passwordInput" placeholder="password" required></input>
           </div>
-          <button type="submit" className="btn" onSubmit={handleSubmit}>Sign up</button>
+          <button type="submit" className="btn sign-up" onSubmit={handleSignUp}>Sign up</button>
         </form>
       </div>
     </React.Fragment>

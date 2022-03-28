@@ -13,7 +13,7 @@ $.ajaxSetup({
 
 //___________________Create a User_____________________
 
-export var createUser = function (username, email, password) {
+export var createUser = function (username, email, password, callback) {
   var request = {
     type: 'POST',
     url: 'api/users',
@@ -26,6 +26,7 @@ export var createUser = function (username, email, password) {
     },
     success: function (response) {
       console.log(response);
+      callback();
     }
   }
   $.ajax(request);
