@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     delete '/tweets/:id' => 'tweets#destroy'
 
     #Sessions
-    post '/sessions' => 'sessions#create'
+    post '/sessions'     => 'sessions#create'
+    get '/authenticated' => 'sessions#authenticated'
 
   end
   
