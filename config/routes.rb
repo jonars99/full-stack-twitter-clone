@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     #Sessions
     post '/sessions'     => 'sessions#create'
     get '/authenticated' => 'sessions#authenticated'
+    delete '/sessions'   => 'sessions#destroy'
 
   end
   
