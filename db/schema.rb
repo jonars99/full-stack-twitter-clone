@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_16_134150) do
+ActiveRecord::Schema.define(version: 2022_03_28_110241) do
+
+  create_table "sessions", force: :cascade do |t|
+    t.string "token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
 
   create_table "tweets", force: :cascade do |t|
     t.string "message"
@@ -28,5 +36,6 @@ ActiveRecord::Schema.define(version: 2022_03_16_134150) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "sessions", "users"
   add_foreign_key "tweets", "users"
 end
