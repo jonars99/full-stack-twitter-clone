@@ -5,7 +5,7 @@ $.ajaxSetup({
     'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
   },
   error: function (request, errorMessage) {
-    console.log(request, errorMessage)
+    console.log(request, errorMessage);
   }
 });
 
@@ -25,10 +25,28 @@ export var createUser = function (username, email, password, callback) {
       }
     },
     success: function (response) {
-      console.log(response);
-      callback();
+      callback(response);
     }
-  }
+  };
+  $.ajax(request);
+};
+
+//___________Create a Session (User Sign in)_____________
+
+export var logInUser = function (username, password, callback) {
+  var request = {
+    type: 'POST',
+    url: 'api/sessions',
+    data: {
+      user: {
+        username: username,
+        password: password
+      }
+    },
+    success: function (response) {
+      callback(response);
+    }
+  };
   $.ajax(request);
 };
 
@@ -42,9 +60,9 @@ export var getTweets = function (callback) {
     type: 'GET',
     url: 'api/tweets',
     success: callback
-  }
+  };
   $.ajax(request);
-}
+};
 
 //_______________Post a Tweet___________________
 
@@ -58,9 +76,9 @@ export var postTweet = function (content, callback) {
       }
     },
     success: callback
-  }
+  };
   $.ajax(request);
-}
+};
 
 //_______________Delete a Tweet__________________
 
@@ -69,6 +87,6 @@ export var deleteTweet = function (id, callback) {
     type: 'DELETE',
     url: 'api/tweets/' + id,
     success: callback
-  }
+  };
   $.ajax(request);
-}
+};
