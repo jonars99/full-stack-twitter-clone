@@ -7,18 +7,19 @@ module Api
     end
 
     def create 
-      user = User.find_by(id: 6)
+      user = User.find_by(id: params[:id])
       @tweet = user.tweets.new(tweet_params)
 
       if @tweet.save
         render 'api/tweets/create'
       else 
         render json: { success: false }
+        puts @tweet.errors.to_yaml
       end
     end
 
     def destroy
-      user = User.find_by(id: 6)
+      user = User.find_by(id: params[:id])
       tweet = Tweet.find_by(id: params[:id])
 
       if tweet and tweet.user == user and tweet.destroy
