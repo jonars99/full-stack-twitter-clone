@@ -5,7 +5,8 @@ import { createUser, logInUser } from '../packs/requests';
 
 const Home = () => {
 
-  const [successMessage, setSuccessMessage] = useState("");
+  const [signUpMessage, setSignUpMessage] = useState("");
+  const [logInMessage, setLogInMessage] = useState("");
   
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -14,10 +15,10 @@ const Home = () => {
     const password = $('#newPasswordInput').val();
     createUser(username, email, password, function (response) {
       if (response.success == false) {
-        setSuccessMessage("Error! Please Try Again");
+        setSignUpMessage("Error! Please try again");
       }
       else {
-        setSuccessMessage("Success! Please Log In");
+        setSignUpMessage("Success! Please log in");
       }
     });
   }
@@ -29,10 +30,9 @@ const Home = () => {
     logInUser(username, password, function (response) {
       if (response.success == true) {
         window.location.assign('/feed');
-        console.log('user logged in, session created');
       }
       else {
-        console.log('error logging in');
+        setLogInMessage("Error logging in. Please try again")
       }
     });
   }
@@ -56,7 +56,9 @@ const Home = () => {
             <input type="password" className="form-control" id="newPasswordInput" placeholder="password" minLength="8" required></input>
           </div>
           <button type="submit" className="btn sign-up" onSubmit={handleSignUp}>Sign up</button>
-          {successMessage}
+          <p>
+            {signUpMessage}
+          </p>
         </form>
 
         <form onSubmit={handleLogIn} className="border">
@@ -70,6 +72,9 @@ const Home = () => {
             <input type="password" className="form-control" id="passwordInput" placeholder="password" required></input>
           </div>
           <button type="submit" className="btn log-in" onSubmit={handleLogIn}>Log In</button>
+          <p>
+            {logInMessage}
+          </p>
         </form>
 
       </div>
