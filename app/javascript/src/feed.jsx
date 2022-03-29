@@ -9,6 +9,7 @@ const Feed = () => {
 
   const [tweets, setTweets] = useState([]);
   const [newTweet, setNewTweet] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   //    map tweets to state
 
@@ -20,8 +21,15 @@ const Feed = () => {
 
   const postTweetHandler = function (event) {
     event.preventDefault();
-    postTweet(newTweet);
-    getTweets(listOfTweets);
+    postTweet(newTweet, function (response) {
+      if (response.success == false) {
+        setErrorMessage("Sorry, there was an error posting your tweet. Please try again");
+      }
+      else {
+        setErrorMessage("");
+        getTweets(listOfTweets);
+      }
+    });
   }
 
   const tweetInputHandler = function (event) {
@@ -30,8 +38,7 @@ const Feed = () => {
 
   const deleteTweetHandler = function (event) {
     var id = event.target.dataset.id;
-    deleteTweet(id);
-    getTweets(listOfTweets);
+    deleteTweet(id, getTweets(listOfTweets));
   }
 
   //   get tweets on page start up
@@ -53,6 +60,9 @@ const Feed = () => {
           </textarea>
           <button type="submit" className="btn" onSubmit={postTweetHandler}>Tweet</button>
         </form>
+        <p>
+          {errorMessage}
+        </p>
         <div id="twitterFeed">
           {tweets.map(tweet => (
             <div key={tweet.id}>

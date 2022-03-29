@@ -59,7 +59,9 @@ export var getTweets = function (callback) {
   var request = {
     type: 'GET',
     url: 'api/tweets',
-    success: callback
+    success: function (response) {
+      callback(response);
+    }
   };
   $.ajax(request);
 };
@@ -75,7 +77,9 @@ export var postTweet = function (content, callback) {
         message: content
       }
     },
-    success: callback
+    success: function (response) {
+      callback(response);
+    }
   };
   $.ajax(request);
 };
@@ -86,7 +90,9 @@ export var deleteTweet = function (id, callback) {
   var request = {
     type: 'DELETE',
     url: 'api/tweets/' + id,
-    success: callback
+    success: function () {
+      callback();
+    }
   };
   $.ajax(request);
 };
