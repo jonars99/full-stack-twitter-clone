@@ -7,7 +7,9 @@ module Api
     end
 
     def create 
-      user = User.find_by(id: params[:id])
+      token = cookies.permanent.signed[:twitter_session_token]
+      session = Session.find_by(token: token)
+      user = session.user
       @tweet = user.tweets.new(tweet_params)
 
       if @tweet.save
@@ -19,7 +21,9 @@ module Api
     end
 
     def destroy
-      user = User.find_by(id: params[:id])
+      token = cookies.permanent.signed[:twitter_session_token]
+      session = Session.find_by(token: token)
+      user = session.user
       tweet = Tweet.find_by(id: params[:id])
 
       if tweet and tweet.user == user and tweet.destroy
