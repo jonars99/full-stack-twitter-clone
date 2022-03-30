@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import { getTweets, postTweet, deleteTweet } from '../packs/requests';
+import { getTweets, postTweet, deleteTweet, authenticateUser } from '../packs/requests';
 
 const Feed = () => {
+
+  //    current User
+  var currentUser;
 
   //    states
 
@@ -47,6 +50,14 @@ const Feed = () => {
   //   get tweets on page start up
 
   useEffect(() => {
+    authenticateUser(function (response) {
+      if (response.authenticated == true) {
+        currentUser = response.username
+      }
+      else if (response.authenticated == false) {
+        window.location.replace('/');
+      }
+    });
     getTweets(listOfTweets);
   }, []);
 

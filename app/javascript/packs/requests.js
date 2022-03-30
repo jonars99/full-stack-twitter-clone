@@ -50,6 +50,19 @@ export var logInUser = function (username, password, callback) {
   $.ajax(request);
 };
 
+//_____________Authenticate User________________
+
+export var authenticateUser = function (callback) {
+  var request = {
+    type: 'GET',
+    url: 'api/authenticated',
+    success: function (response) {
+      callback(response);
+    }
+  };
+  $.ajax(request);
+}
+
 //__________________TWEETS______________________
 
 

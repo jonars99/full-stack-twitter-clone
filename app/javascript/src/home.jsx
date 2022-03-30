@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import { createUser, logInUser } from '../packs/requests';
+import { createUser, logInUser, authenticateUser } from '../packs/requests';
 
 const Home = () => {
 
@@ -36,6 +36,14 @@ const Home = () => {
       }
     });
   }
+
+  useEffect(() => {
+    authenticateUser(function(response) {
+      if (response.authenticated == true) {
+        window.location.assign('/feed');
+      }
+    })
+  }, [])
 
   return(
     <React.Fragment>
