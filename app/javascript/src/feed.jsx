@@ -80,6 +80,9 @@ const Feed = () => {
       <div className="col-6 m-auto my-5">
         <button className="btn fw-bold btn-danger justify-self-end" onClick={logOutHandler}>Log Out</button>
         <p>Feed page</p>
+        <div>
+          {currentUser}
+        </div>
         <form onSubmit={postTweetHandler}>
           <textarea 
             className="form-control" 
@@ -97,15 +100,30 @@ const Feed = () => {
         <p>
           {errorMessage}
         </p>
-        <div id="twitterFeed">
-          {tweets.map(tweet => (
-            <div key={tweet.id}>
-              <p>{tweet.username}</p>
-              <p>{tweet.message}</p>
-              <p>{tweet.created_at}</p>
-              <button className="btn" data-id={tweet.id} onClick={deleteTweetHandler}>delete</button>
-            </div>
-          ))}
+
+        <div id="twitterFeed" className="border my-2">
+
+          {tweets.map(tweet => {
+            if (tweet.username === currentUser) {
+              return (
+                <div key={tweet.id}>
+                  <p>{tweet.username}</p>
+                  <p>{tweet.message}</p>
+                  <p>{tweet.created_at}</p>
+                  <button className="btn" data-id={tweet.id} onClick={deleteTweetHandler}>delete</button>
+                </div>
+              )
+            }
+            else {
+              return (
+                <div key={tweet.id}>
+                  <p>{tweet.username}</p>
+                  <p>{tweet.message}</p>
+                  <p>{tweet.created_at}</p>
+                </div>
+              )
+            }
+          })}
         </div>
       </div>
     </React.Fragment>
