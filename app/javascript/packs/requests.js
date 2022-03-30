@@ -31,7 +31,7 @@ export var createUser = function (username, email, password, callback) {
   $.ajax(request);
 };
 
-//___________Create a Session (User Sign in)_____________
+//___________Create Session (User Logs in)_____________
 
 export var logInUser = function (username, password, callback) {
   var request = {
@@ -50,6 +50,19 @@ export var logInUser = function (username, password, callback) {
   $.ajax(request);
 };
 
+//___________Delete Session (User Logs Out)_____________
+
+export var logOutUser = function (callback) {
+  var request = {
+    type: 'DELETE',
+    url: 'api/sessions',
+    success: function (response) {
+      callback(response);
+    }
+  };
+  $.ajax(request);
+};
+
 //_____________Authenticate User________________
 
 export var authenticateUser = function (callback) {
@@ -61,7 +74,7 @@ export var authenticateUser = function (callback) {
     }
   };
   $.ajax(request);
-}
+};
 
 //__________________TWEETS______________________
 

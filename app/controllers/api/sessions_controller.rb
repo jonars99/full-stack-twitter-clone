@@ -31,19 +31,19 @@ module Api
         }
 
       else 
-        render json: {
-          authenticated: false
-        }
+        render json: { authenticated: false }
       end
 
     end
 
     def destroy
       token = cookies.permanent.signed[:twitter_session_token]
-      session = Session.find_by[token: token]
+      session = Session.find_by(token: token)
 
       if session and session.destroy
         render json: { success: true }
+      else 
+        render json: { success: false }
       end
 
     end

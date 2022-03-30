@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
-import { getTweets, postTweet, deleteTweet, authenticateUser } from '../packs/requests';
+import $, { get } from 'jquery';
+import { getTweets, postTweet, deleteTweet, authenticateUser, logOutUser } from '../packs/requests';
 
 const Feed = () => {
-
-  //    current User
-  var currentUser;
 
   //    states
 
   const [tweets, setTweets] = useState([]);
   const [newTweet, setNewTweet] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [currentUser, setCurrentUser] = useState("");
 
   //    map tweets to state
 
@@ -47,23 +45,38 @@ const Feed = () => {
     });
   }
 
-  //   get tweets on page start up
+  const logOutHandler = function () {
+    logOutUser(function (response) {
+      if (response.success == true) {
+        window.location.replace('/');
+      };
+    });
+  }
 
-  useEffect(() => {
+  //  get logged in user 
+
+  const getCurrentUser = function () {
     authenticateUser(function (response) {
       if (response.authenticated == true) {
-        currentUser = response.username
+        setCurrentUser(response.username);
       }
       else if (response.authenticated == false) {
         window.location.replace('/');
       }
     });
+  };
+
+  //   get tweets on page start up
+
+  useEffect(() => {
+    getCurrentUser(currentUser);
     getTweets(listOfTweets);
   }, []);
 
   return(
     <React.Fragment>
       <div className="col-6 m-auto my-5">
+        <button className="btn fw-bold btn-danger justify-self-end" onClick={logOutHandler}>Log Out</button>
         <p>Feed page</p>
         <form onSubmit={postTweetHandler}>
           <textarea 
