@@ -11,6 +11,7 @@ const Feed = () => {
   const [newTweet, setNewTweet] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [currentUser, setCurrentUser] = useState("");
+  const [characters, setCharacters] = useState(140);
 
   //    map tweets to state
 
@@ -36,6 +37,7 @@ const Feed = () => {
 
   const tweetInputHandler = function (event) {
     setNewTweet(event.target.value);
+    setCharacters(140 - event.target.value.length);
   }
 
   const deleteTweetHandler = function (event) {
@@ -85,7 +87,12 @@ const Feed = () => {
             value={newTweet} 
             onChange={tweetInputHandler}>
           </textarea>
-          <button type="submit" className="btn" onSubmit={postTweetHandler}>Tweet</button>
+          {characters}
+          <button 
+            type="submit" 
+            className="btn" 
+            onSubmit={postTweetHandler}
+            disabled={characters == 140 || characters < 0}>Tweet</button>
         </form>
         <p>
           {errorMessage}
