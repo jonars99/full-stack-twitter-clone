@@ -28,6 +28,7 @@ const Feed = () => {
       else {
         setErrorMessage("");
         getTweets(listOfTweets);
+        setNewTweet("");
       }
     });
   }
@@ -38,7 +39,9 @@ const Feed = () => {
 
   const deleteTweetHandler = function (event) {
     var id = event.target.dataset.id;
-    deleteTweet(id, getTweets(listOfTweets));
+    deleteTweet(id, function () {
+      getTweets(listOfTweets);
+    });
   }
 
   //   get tweets on page start up

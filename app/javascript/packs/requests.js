@@ -90,8 +90,10 @@ export var deleteTweet = function (id, callback) {
   var request = {
     type: 'DELETE',
     url: 'api/tweets/' + id,
-    success: function () {
-      callback();
+    success: function (response) {
+      if (response.success == true) {
+        callback();
+      }
     }
   };
   $.ajax(request);
