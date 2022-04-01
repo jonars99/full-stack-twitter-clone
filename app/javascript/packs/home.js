@@ -1,2 +1,2 @@
-import '../src/home';
+import '../src/Home';
 import './requests'; 
