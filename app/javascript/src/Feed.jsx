@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import $, { get } from 'jquery';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 import { getTweets, postTweet, deleteTweet, authenticateUser, logOutUser } from '../packs/requests';
 
 const Feed = () => {
@@ -80,9 +80,9 @@ const Feed = () => {
       <div className="col-6 m-auto my-5">
         <button className="btn fw-bold btn-danger justify-self-end" onClick={logOutHandler}>Log Out</button>
         <p>Feed page</p>
-        <div>
-          {currentUser}
-        </div>
+        <Router>
+          <Link to={'/' + currentUser}>@{currentUser}</Link>
+        </Router>
         <form onSubmit={postTweetHandler}>
           <textarea 
             className="form-control" 
