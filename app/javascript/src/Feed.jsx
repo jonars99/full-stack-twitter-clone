@@ -104,7 +104,7 @@ const Feed = () => {
             if (tweet.username === currentUser) {
               return (
                 <div key={tweet.id}>
-                  <p>{tweet.username}</p>
+                  <p className="fw-bold">{tweet.username}<a href={'/' + tweet.username} className="fw-light">@{tweet.username}</a></p>
                   <p>{tweet.message}</p>
                   <p>{tweet.created_at}</p>
                   <button className="btn" data-id={tweet.id} onClick={deleteTweetHandler}>delete</button>
@@ -114,7 +114,7 @@ const Feed = () => {
             else {
               return (
                 <div key={tweet.id}>
-                  <p>{tweet.username}</p>
+                  <p className="fw-bold"> {tweet.username} <a href={'/' + tweet.username} className="fw-light"> @{tweet.username} </a></p>
                   <p>{tweet.message}</p>
                   <p>{tweet.created_at}</p>
                 </div>
