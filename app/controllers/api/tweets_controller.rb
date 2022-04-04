@@ -6,6 +6,15 @@ module Api
       render 'api/tweets/index'
     end
 
+    def index_by_user
+      user = User.find_by(username: params[:username])
+
+      if user 
+        @tweets = user.tweets.all.order(created_at: :desc)
+        render 'api/tweets/index'
+      end      
+    end
+
     def create 
       token = cookies.permanent.signed[:twitter_session_token]
       session = Session.find_by(token: token)

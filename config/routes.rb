@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'static_pages#home'
   get '/feed' => 'static_pages#feed'
-  get '/user/:username' => 'static_pages#user_page'
+  get '/:username' => 'static_pages#user_page'
 
   namespace :api do
     #Users
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get  '/tweets'       => 'tweets#index'
     post '/tweets'       => 'tweets#create'
     delete '/tweets/:id' => 'tweets#destroy'
+    get '/users/:username/tweets' => 'tweets#index_by_user'
 
     #Sessions
     post '/sessions'     => 'sessions#create'

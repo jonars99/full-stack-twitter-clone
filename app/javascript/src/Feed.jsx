@@ -16,7 +16,7 @@ const Feed = () => {
 
   const listOfTweets = function (response) {
     setTweets(response.tweets.map(tweet => tweet));
-  }
+  };
 
   //    handlers 
 
@@ -32,19 +32,19 @@ const Feed = () => {
         setNewTweet("");
       }
     });
-  }
+  };
 
   const tweetInputHandler = function (event) {
     setNewTweet(event.target.value);
     setCharacters(140 - event.target.value.length);
-  }
+  };
 
   const deleteTweetHandler = function (event) {
     var id = event.target.dataset.id;
     deleteTweet(id, function () {
       getTweets(listOfTweets);
     });
-  }
+  };
 
   const logOutHandler = function () {
     logOutUser(function (response) {
@@ -52,7 +52,7 @@ const Feed = () => {
         window.location.replace('/');
       };
     });
-  }
+  };
 
   //  get logged in user 
 
@@ -67,7 +67,7 @@ const Feed = () => {
     });
   };
 
-  //   get tweets on page start up
+  //   get tweets on page load
 
   useEffect(() => {
     getCurrentUser(currentUser);
@@ -79,7 +79,7 @@ const Feed = () => {
       <div className="col-6 m-auto my-5">
         <button className="btn fw-bold btn-danger justify-self-end" onClick={logOutHandler}>Log Out</button>
         <p>Feed page</p>
-        <a href={'/user/' + currentUser}>@{currentUser}</a>
+        <a href={'/' + currentUser}>@{currentUser}</a>
         <form onSubmit={postTweetHandler}>
           <textarea 
             className="form-control" 
@@ -98,7 +98,7 @@ const Feed = () => {
           {errorMessage}
         </p>
 
-        <div id="twitterFeed" className="border my-2">
+        <div className="border my-2">
 
           {tweets.map(tweet => {
             if (tweet.username === currentUser) {
@@ -126,11 +126,11 @@ const Feed = () => {
       </div>
     </React.Fragment>
   )
-}
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Feed />,
     document.body.appendChild(document.createElement('div'))
   )
-})
+});

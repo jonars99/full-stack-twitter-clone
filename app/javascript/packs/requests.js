@@ -92,6 +92,20 @@ export var getTweets = function (callback) {
   $.ajax(request);
 };
 
+//______________Get Users Tweets__________________
+
+export var getUsersTweets = function (username, callback) {
+  var request = {
+    type: 'GET',
+    url: '/api/users/' + username + '/tweets',
+    success: function (response) {
+      callback(response);
+    }
+  }
+  $.ajax(request);
+}
+
+
 //_______________Post a Tweet___________________
 
 export var postTweet = function (content, callback) {
