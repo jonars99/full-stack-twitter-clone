@@ -25,6 +25,9 @@ const Home = () => {
       }
       else {
         setSignUpMessage("Success! Please log in");
+        $('#newUsernameInput').val('');
+        $('#newEmailInput').val('');
+        $('#newPasswordInput').val('');
       }
     });
   }
@@ -89,7 +92,7 @@ const Home = () => {
                   <input type="password" className="form-control" id="newPasswordInput" placeholder="password" minLength="8" required></input>
                 </div>
                 <button type="submit" className="btn mt-3" onSubmit={handleSignUp}>Sign up</button>
-                <p>
+                <p className="form-message my-2">
                   {signUpMessage}
                 </p>
               </form>
@@ -107,7 +110,7 @@ const Home = () => {
                   <input type="password" className="form-control mb-5 mb-sm-3" id="passwordInput" placeholder="password" required></input>
                 </div>
                 <button type="submit" className="btn mt-3" onSubmit={handleLogIn}>Log In</button>
-                <p>
+                <p className="form-message m-0 p-0">
                   {logInMessage}
                 </p>
               </form>
