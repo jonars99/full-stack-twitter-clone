@@ -1,0 +1,87 @@
+// shared styles
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #151515;
+  color: #fefefe;
+  letter-spacing: 1.5px;
+}
+
+// Home page (log in, sign up)
+
+#homePage {
+
+  #homeLeft {
+    background-color: #2A9CEF;
+  }
+
+  .home-wrapper {
+    border: 1rem solid #2A9CEF;
+      
+    .twitter-icon {
+      font-size: 2.7rem;
+    }
+    
+    h1 {
+      font-weight: 900;
+      font-size: 2.7rem;
+      letter-spacing: 3px;
+    }
+    
+    h3 {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+    }
+    
+    .home-page-forms {
+      border-radius: 1rem;
+      color: #151515;
+      background-color: #fefefe;
+      
+      .heading {
+        font-size: 1.2rem;
+      }
+      
+      div {
+        padding: .2rem 0;
+      }
+      
+      button {
+        background-color: #2A9CEF;
+        border-radius: 5rem;
+        color: #fefefe;
+        box-shadow: 0 7px 10px #cecece;
+        font-weight: 700;
+        width: 90%;
+        align-self: center;
+      }
+    }
+  }
+
+}
+
+// responsive design 
+
+@media all and (min-width: 992px) {
+  
+  #homePage {
+
+    .home-wrapper {
+      border: none;
+
+     .home-page-forms .heading {
+      font-size: 1rem;
+      }
+
+    }
+
+  }
+
+}
+
+// 992px = bootstrap large
+
+
