@@ -66,7 +66,7 @@ const Home = () => {
 
         <div className="col-12 col-lg-6 fw-bold p-4 home-wrapper">
 
-          <div className="twitter-icon text-center">
+          <div className="twitter-icon text-center text-lg-start">
             <i className="fa-brands fa-twitter"></i>
           </div>
           <div className="my-3 mb-5 mb-lg-3">
