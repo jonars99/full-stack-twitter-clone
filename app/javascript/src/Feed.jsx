@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { getTweets, postTweet, deleteTweet, authenticateUser, logOutUser } from '../packs/requests';
+import Navbar from './Navbar';
 
 const Feed = () => {
 
@@ -30,6 +31,7 @@ const Feed = () => {
         setErrorMessage("");
         getTweets(listOfTweets);
         setNewTweet("");
+        setCharacters(140);
       }
     });
   };
@@ -75,7 +77,9 @@ const Feed = () => {
   }, []);
 
   return(
-    <React.Fragment>
+    <div id="feed" className="container">
+      <Navbar />
+
       <div className="col-6 m-auto my-5">
         <button className="btn fw-bold btn-danger justify-self-end" onClick={logOutHandler}>Log Out</button>
         <p>Feed page</p>
@@ -124,7 +128,8 @@ const Feed = () => {
           
         </div>
       </div>
-    </React.Fragment>
+
+    </div>
   )
 };
 
