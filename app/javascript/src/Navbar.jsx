@@ -7,14 +7,26 @@ const Navbar = () => {
       <div className="container-fluid">
 
         <a className="navbar-brand" href="/feed">
-          <i className="fa-brands fa-twitter"></i>
+          <i className="fa-brands fa-twitter fs-2"></i>
         </a>
 
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#userNav" aria-controls="userNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon">=</span>
+        <form className="d-lg-none">
+          <div className="input-group">
+            <span className="input-group-text">
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </span>
+            <input className="form-control search" type="search" placeholder="Search" aria-label="Search"/>
+          </div>
+        </form>
+
+        <button className="navbar-toggler m-0 p-0 p-sm-1" type="button" data-bs-toggle="collapse" data-bs-target="#userNav" aria-controls="userNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon">
+            <i className="fa-solid fa-bars mt-1"></i>
+          </span>
         </button>
 
-        <div id="userNav" className="navbar-collapse collapse" >
+        <div id="userNav" className="navbar-collapse collapse text-end" >
+
           <ul className="navbar-nav d-lg-none">
             <li className="nav-item">
               <a className="nav-link active" href="#">my profile</a>
@@ -29,6 +41,7 @@ const Navbar = () => {
               <a className="nav-link" href="#">log out</a>
             </li>
           </ul>
+
           <ul className="navbar-nav ms-auto">
             <li className="nav-item dropdown d-none d-lg-flex">
               <a id="userDropdown" className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">username</a>
@@ -40,6 +53,7 @@ const Navbar = () => {
               </ul>
             </li>
           </ul>
+
         </div>
 
       </div>
