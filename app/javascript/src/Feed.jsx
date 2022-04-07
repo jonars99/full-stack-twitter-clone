@@ -91,12 +91,12 @@ const Feed = () => {
           <div className="row justify-content-around">
 
             <div className="col-5 col-xl-12 username-box">
-              <ul className="p-2 py-xxl-3">
+              <ul className="p-2 py-xxl-3 m-0">
                 <li className="title fw-bold">{currentUser}</li>
                 <a href={"/" + currentUser}>@{currentUser}</a>
-                <ul className="px-0 my-1 user-stats">
+                <ul className="px-0 mt-1 user-stats">
                   <li>TWEETS
-                    <span className="d-md-flex">{tweetCount}</span>
+                    <span className="d-md-flex ps-4 ps-md-0">{tweetCount}</span>
                   </li>
                   <li>FOLLOWING 
                     <span className="d-md-flex">0</span>
@@ -109,13 +109,15 @@ const Feed = () => {
             </div>
 
             <div className="col-5 col-xl-12 my-xl-3 explore-box">
-              <ul className="p-2 py-xxl-3">
+              <ul className="p-2 py-xxl-3 m-0">
                 <li className="title fw-bold">#Explore</li>
-                <li>#WorldHealthDay</li>
-                <li>#Rails</li>
-                <li>#MathsInFilmOrSong</li>
-                <li>#ror</li>
-                <li>#etc</li>
+                <ul className="ps-2 explore-tags">
+                  <li>#WorldHealthDay</li>
+                  <li>#Rails</li>
+                  <li>#MathsInFilmOrSong</li>
+                  <li>#ror</li>
+                  <li>#etc</li>
+                </ul>
               </ul>
             </div>
 

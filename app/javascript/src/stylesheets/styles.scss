@@ -134,6 +134,51 @@ body {
 
 }
 
+// Feed
+
+#feed {
+
+  .username-box, .explore-box {
+    color: #151515;
+    background-color: #fefefe;
+    border-radius: .8rem;
+    font-size: .55rem;
+    font-weight: 300;
+
+    a {
+      color: grey;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    .user-stats li {
+      display: table-cell;
+      padding-right: .5rem;
+
+      span {
+        font-weight: 400;
+        color: #2A9CEF;
+        font-size: .75rem;
+      }
+
+    }
+
+    a:hover, .explore-tags li:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+
+  }
+
+  .title {
+    font-size: .8rem;
+  }
+}
+
 // responsive design 
 
 @media all and (min-width: 992px) {
@@ -157,6 +202,16 @@ body {
   #navbar form {
     width: 50%;
   }
+
+  #feed .username-box .user-stats li {
+    display: list-item;
+
+    span {
+      padding-left: .4rem;
+      font-size: .6rem;
+    }
+  }
+
 }
 
 /** 
