@@ -10,7 +10,7 @@ const Navbar = () => {
           <i className="fa-brands fa-twitter fs-2"></i>
         </a>
 
-        <form className="d-lg-none">
+        <form className="d-xl-none">
           <div className="input-group">
             <span className="input-group-text">
               <i className="fa-solid fa-magnifying-glass"></i>
