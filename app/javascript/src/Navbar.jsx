@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { getCurrentUser } from "../packs/utils";
+import { logOutUser } from "../packs/requests";
 
 const Navbar = () => {
 
   const [currentUser, setCurrentUser] = useState("");
+
+  const logOutHandler = function () {
+    logOutUser(function (response) {
+      if (response.success == true) {
+        window.location.replace('/');
+      };
+    });
+  };
 
   useEffect(() => {
     getCurrentUser(function (response) {
@@ -36,29 +45,30 @@ const Navbar = () => {
 
         <div id="userNav" className="navbar-collapse collapse text-end" >
 
-          <ul className="navbar-nav d-lg-none">
+          <ul className="navbar-nav burger-menu d-lg-none mt-2">
             <li className="nav-item">
-              <a className="nav-link active" href="#">my profile</a>
+              <a className="nav-link d-inline" href={"/" + currentUser}>my profile</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">settings</a>
+              <a className="nav-link d-inline" href="#">settings</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">languages</a>
+              <a className="nav-link d-inline" href="#">languages</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">log out</a>
+              <button className="btn py-1" onClick={logOutHandler}>log out</button>
             </li>
           </ul>
 
           <ul className="navbar-nav ms-auto">
             <li className="nav-item dropdown d-none d-lg-flex">
-              <a id="userDropdown" className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">{currentUser}</a>
+              <a id="userDropdown" className="nav-link dropdown-toggle px-3" role="button" data-bs-toggle="dropdown" aria-expanded="false">{currentUser}</a>
               <ul className="dropdown-menu" aria-labelledby="userDropdown">
-                <li><a className="dropdown-item" href="#">my profile</a></li>
+                <li><a className="dropdown-item" href={"/" + currentUser}>my profile</a></li>
                 <li><a className="dropdown-item" href="#">settings</a></li>
                 <li><a className="dropdown-item" href="#">languages</a></li>
-                <li><a className="dropdown-item" href="#">log out</a></li>
+                <div className="dropdown-divider"></div>
+                <button className="btn text-start w-100 py-1 px-3 log-out-btn" onClick={logOutHandler}>log out</button>
               </ul>
             </li>
           </ul>
