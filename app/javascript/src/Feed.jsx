@@ -82,21 +82,21 @@ const Feed = () => {
   }, []);
 
   return(
-    <div id="feed" className="container">
+    <div id="top" className="container mb-5">
       <Navbar />
-      <div className="row mt-3">
+      <div id="feed" className="container row mt-1">
 
         <div className="col-12 col-xl-3">
 
           <div className="row justify-content-around">
 
             <div className="col-5 col-xl-12 username-box">
-              <ul className="p-2 py-xxl-3 m-0">
+              <ul className="p-0 py-2 py-xxl-3 ps-xxl-2 m-0">
                 <li className="title fw-bold">{currentUser}</li>
                 <a href={"/" + currentUser}>@{currentUser}</a>
                 <ul className="px-0 mt-1 user-stats">
                   <li>TWEETS
-                    <span className="d-md-flex ps-4 ps-md-0">{tweetCount}</span>
+                    <a href={"/" + currentUser} className="d-md-flex ps-4 ps-md-0 user-stats-tweets">{tweetCount}</a>
                   </li>
                   <li>FOLLOWING 
                     <span className="d-md-flex">0</span>
@@ -125,45 +125,54 @@ const Feed = () => {
 
         </div>
 
-        <div className="col-12 col-xl-6 twitter-feed">
-          <a href={'/' + currentUser}>@{currentUser}</a>
-          <form onSubmit={postTweetHandler}>
-            <textarea 
-              className="form-control" 
-              id="tweetInput" 
-              value={newTweet} 
-              onChange={tweetInputHandler}>
-            </textarea>
-            {characters}
-            <button 
-              type="submit" 
-              className="btn" 
-              onSubmit={postTweetHandler}
-              disabled={characters == 140 || characters < 0}>Tweet</button>
-          </form>
-          <p>
-            {errorMessage}
-          </p>
+        <div className="col-12 col-xl-6 twitter-feed px-4 my-4 my-xl-0">
 
-          <div className="border my-2">
+          <div className="new-tweet-area p-3 pb-1">
+            <form className="m-1" onSubmit={postTweetHandler}>
+              <textarea 
+                className="form-control tweet-box" 
+                id="tweetInput" 
+                value={newTweet} 
+                onChange={tweetInputHandler}
+                placeholder="What's happening?">
+              </textarea>
+              <div className="text-end">
+                <p className="m-0 py-1 char-count">{characters}</p>
+                <button 
+                  type="submit" 
+                  className="btn btn-sm fw-bold px-3 tweet-btn" 
+                  onSubmit={postTweetHandler}
+                  disabled={characters == 140 || characters < 0}>
+                  Tweet
+                </button>
+              </div>
+            </form>
+            <p>
+              {errorMessage}
+            </p>
+          </div>
+
+          <div className="tweet-list">
 
             {tweets.map(tweet => {
               if (tweet.username === currentUser) {
                 return (
-                  <div key={tweet.id}>
-                    <p className="fw-bold">{tweet.username}<a href={'/' + tweet.username} className="fw-light">@{tweet.username}</a></p>
-                    <p>{tweet.message}</p>
-                    <p>{tweet.created_at}</p>
-                    <button className="btn" data-id={tweet.id} onClick={deleteTweetHandler}>delete</button>
+                  <div className="tweet p-3 pb-0" key={tweet.id}>
+                    <p className="fw-bold d-inline">{tweet.username}</p>
+                    <a href={'/' + tweet.username} className="fw-light ps-1">@{tweet.username}</a>
+                    <p className="d-inline date ps-1">{tweet.created_at}</p>
+                    <p className="pt-3 fw-light">{tweet.message}</p>
+                    <button className="btn btn-sm d-flex ms-auto delete-btn" data-id={tweet.id} onClick={deleteTweetHandler}>Delete</button>
                   </div>
                 )
               }
               else {
                 return (
-                  <div key={tweet.id}>
-                    <p className="fw-bold"> {tweet.username} <a href={'/' + tweet.username} className="fw-light"> @{tweet.username} </a></p>
-                    <p>{tweet.message}</p>
-                    <p>{tweet.created_at}</p>
+                  <div className="tweet pb-4 p-3" key={tweet.id}>
+                    <p className="fw-bold d-inline">{tweet.username}</p>
+                    <a href={'/' + tweet.username} className="fw-light ps-1">@{tweet.username}</a>
+                    <p className="d-inline date ps-1">{tweet.created_at}</p>
+                    <p className="pt-3 fw-light">{tweet.message}</p>
                   </div>
                 )
               }
@@ -172,7 +181,7 @@ const Feed = () => {
           </div>
         </div>
 
-        <div className="col-3 d-none d-xl-block">
+        <div className="col-3 d-none d-xl-block p-0">
           <form>
             <div className="input-group">
               <span className="input-group-text">
@@ -182,8 +191,8 @@ const Feed = () => {
             </div>
           </form>
         </div>
-
       </div>
+
     </div>
   )
 };
