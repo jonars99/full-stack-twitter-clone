@@ -23,7 +23,7 @@ const Feed = () => {
 
   //    count users tweets for feed stats
 
-  const countUsersTweets = (username) => {
+  var countUsersTweets = (username) => {
     getUsersTweets(username, function (response) {
       setTweetCount(response.tweets.length);
     })
@@ -109,9 +109,9 @@ const Feed = () => {
             </div>
 
             <div className="col-5 col-xl-12 my-xl-3 explore-box">
-              <ul className="p-2 py-xxl-3 m-0">
+              <ul className="ps-0 p-2 ps-md-2 py-xxl-3 m-0">
                 <li className="title fw-bold">#Explore</li>
-                <ul className="ps-2 explore-tags">
+                <ul className="ps-0 ps-md-2 explore-tags">
                   <li>#WorldHealthDay</li>
                   <li>#Rails</li>
                   <li>#MathsInFilmOrSong</li>
@@ -125,7 +125,7 @@ const Feed = () => {
 
         </div>
 
-        <div className="col-12 col-xl-6 twitter-feed px-4 my-4 my-xl-0">
+        <div className="col-12 col-xl-6 twitter-feed px-md-4 my-4 my-xl-0">
 
           <div className="new-tweet-area p-3 pb-1">
             <form className="m-1" onSubmit={postTweetHandler}>
@@ -203,3 +203,5 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(document.createElement('div'))
     )
 });
+
+export default countUsersTweets
