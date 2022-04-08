@@ -9,8 +9,7 @@ body {
   letter-spacing: 1.5px;
 }
 
-#navbar, #feed {
-
+#navbar, #feed, #userFeed {
   
   .input-group span, .search {
     border: none;
@@ -139,12 +138,13 @@ body {
 
 }
 
-// Feed
+// Feeds
 
-#feed {
+#feed, #userFeed {
 
   color: #151515;
   font-size: .55rem;
+  letter-spacing: 1.2px;
 
   a, .char-count {
     color: grey;
@@ -244,6 +244,14 @@ body {
 
 }
 
+// User feed only 
+
+#userFeed {
+  .back-to-feed {
+    color: #fefefe;
+  }
+}
+
 // responsive design 
 
 @media all and (min-width: 992px) {
@@ -268,15 +276,19 @@ body {
     width: 50%;
   }
 
-  #feed .username-box .user-stats li {
-    display: list-item;
+  #feed, #userFeed {
 
-    span, .user-stats-tweets {
-      padding-left: .4rem;
-      font-size: .6rem;
+    .username-box .user-stats li {
+      display: list-item;
+      
+      span, .user-stats-tweets {
+        padding-left: .4rem;
+        font-size: .6rem;
+      }
     }
-  }
-
+    
+  } 
+    
 }
 
 /** 
