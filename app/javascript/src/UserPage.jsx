@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { getUsersTweets, authenticateUser, deleteTweet } from '../packs/requests';
 import Navbar from './Navbar';
 import './stylesheets/styles.scss';
+import { getCurrentUser, countUsersTweets } from '../packs/utils';
 
 const UserPage = () => {
 
@@ -10,6 +11,7 @@ const UserPage = () => {
 
   const [usersTweets, setUsersTweets] = useState([]);
   const [currentUser, setCurrentUser] = useState("");
+  const [tweetCount, setTweetCount] = useState(0);
 
   //    the clicked user 
 
@@ -17,7 +19,7 @@ const UserPage = () => {
 
   //    map users tweets to state
 
-    const listUserTweets = function (response) {
+  const listUserTweets = function (response) {
     setUsersTweets(response.tweets.map(tweet => tweet));
   };
 
@@ -30,23 +32,13 @@ const UserPage = () => {
     });
   };
 
-  //  get logged in user
-
-  const getCurrentUser = function () {
-    authenticateUser(function (response) {
-      if (response.authenticated == true) {
-        setCurrentUser(response.username);
-      }
-      else if (response.authenticated == false) {
-        window.location.replace('/');
-      }
-    });
-  };
-
-  //    get users tweets on page load
+  //    get user and users tweets on page load
 
   useEffect(() => {
-    getCurrentUser();
+    getCurrentUser(function (response) {
+      setCurrentUser(response.username);
+      countUsersTweets(response.username, setTweetCount);
+    });
     getUsersTweets(username, listUserTweets);
   }, []);
 
@@ -71,7 +63,7 @@ const UserPage = () => {
                 <a href={"/" + username}>@{username}</a>
                 <ul className="px-0 mt-1 user-stats">
                   <li>TWEETS
-                    <a href={"/" + username} className="d-md-flex ps-4 ps-md-0 user-stats-tweets"></a>
+                    <a href={"/" + username} className="d-md-flex ps-4 ps-md-0 user-stats-tweets">{tweetCount}</a>
                   </li>
                   <li>FOLLOWING 
                     <span className="d-md-flex">0</span>

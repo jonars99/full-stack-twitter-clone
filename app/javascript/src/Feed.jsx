@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { getTweets, postTweet, deleteTweet, authenticateUser, getUsersTweets} from '../packs/requests';
 import Navbar from './Navbar';
 import './stylesheets/styles.scss'
+import { getCurrentUser, countUsersTweets } from '../packs/utils';
 
 const Feed = () => {
 
@@ -21,14 +22,6 @@ const Feed = () => {
     setTweets(response.tweets.map(tweet => tweet));
   };
 
-  //    count users tweets for feed stats
-
-  var countUsersTweets = (username) => {
-    getUsersTweets(username, function (response) {
-      setTweetCount(response.tweets.length);
-    })
-  }
-
   //    handlers 
 
   const postTweetHandler = function (event) {
@@ -42,7 +35,7 @@ const Feed = () => {
         getTweets(listOfTweets);
         setNewTweet("");
         setCharacters(140);
-        countUsersTweets(response.tweet.username);
+        countUsersTweets(response.tweet.username, setTweetCount);
       }
     });
   };
@@ -56,28 +49,17 @@ const Feed = () => {
     var id = event.target.dataset.id;
     deleteTweet(id, function () {
       getTweets(listOfTweets);
-      countUsersTweets(currentUser);
-    });
-  };
-
-  //  get logged in user 
-
-  const getCurrentUser = function () {
-    authenticateUser(function (response) {
-      if (response.authenticated == true) {
-        setCurrentUser(response.username);
-        countUsersTweets(response.username);
-      }
-      else if (response.authenticated == false) {
-        window.location.replace('/');
-      }
+      countUsersTweets(currentUser, setTweetCount);
     });
   };
 
   //   get tweets on page load
 
   useEffect(() => {
-    getCurrentUser();
+    getCurrentUser(function (response) {
+      setCurrentUser(response.username);
+      countUsersTweets(response.username, setTweetCount);
+    });
     getTweets(listOfTweets);
   }, []);
 
@@ -134,7 +116,8 @@ const Feed = () => {
                 id="tweetInput" 
                 value={newTweet} 
                 onChange={tweetInputHandler}
-                placeholder="What's happening?">
+                placeholder="What's happening?"
+                maxLength="140">
               </textarea>
               <div className="text-end">
                 <p className="m-0 py-1 char-count">{characters}</p>
@@ -203,5 +186,3 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(document.createElement('div'))
     )
 });
-
-export default countUsersTweets

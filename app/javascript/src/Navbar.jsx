@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { getCurrentUser } from "../packs/utils";
 
 const Navbar = () => {
+
+  const [currentUser, setCurrentUser] = useState("");
+
+  useEffect(() => {
+    getCurrentUser(function (response) {
+      setCurrentUser(response.username);;
+    })
+  }, []);
 
   return(
     <nav id="navbar" className="navbar navbar-expand-lg">
@@ -44,7 +53,7 @@ const Navbar = () => {
 
           <ul className="navbar-nav ms-auto">
             <li className="nav-item dropdown d-none d-lg-flex">
-              <a id="userDropdown" className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">username</a>
+              <a id="userDropdown" className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">{currentUser}</a>
               <ul className="dropdown-menu" aria-labelledby="userDropdown">
                 <li><a className="dropdown-item" href="#">my profile</a></li>
                 <li><a className="dropdown-item" href="#">settings</a></li>
