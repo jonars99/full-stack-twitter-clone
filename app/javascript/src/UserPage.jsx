@@ -29,6 +29,7 @@ const UserPage = () => {
     var id = event.target.dataset.id;
     deleteTweet(id, function () {
       getUsersTweets(username, listUserTweets);
+      countUsersTweets(username, setTweetCount);
     });
   };
 
@@ -37,7 +38,7 @@ const UserPage = () => {
   useEffect(() => {
     getCurrentUser(function (response) {
       setCurrentUser(response.username);
-      countUsersTweets(response.username, setTweetCount);
+      countUsersTweets(username, setTweetCount);
     });
     getUsersTweets(username, listUserTweets);
   }, []);
