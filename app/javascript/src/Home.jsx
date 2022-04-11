@@ -76,7 +76,7 @@ const Home = () => {
 
           <div className="row flex-column flex-sm-row text-center">
 
-            <div className="col-12 col-sm-6 d-flex">
+            <div className="col-12 col-md-6 d-flex">
               <form onSubmit={handleSignUp} className="home-page-forms d-flex flex-column justify-content-around w-100 p-4">
                 <p className="heading">Create your account</p>
                 <div>
@@ -91,14 +91,14 @@ const Home = () => {
                   <label htmlFor="newPasswordInput" className="form-label" hidden>Password</label>
                   <input type="password" className="form-control" id="newPasswordInput" placeholder="password" minLength="8" required></input>
                 </div>
-                <button type="submit" className="btn mt-3" onSubmit={handleSignUp}>Sign up</button>
+                <button type="submit" className="btn mt-4 mt-lg-4" onSubmit={handleSignUp}>Sign up</button>
                 <p className="form-message my-2">
                   {signUpMessage}
                 </p>
               </form>
             </div>
 
-            <div className="col-12 col-sm-6 d-flex my-4 my-sm-0">
+            <div className="col-12 col-md-6 d-flex my-4 my-md-0">
               <form onSubmit={handleLogIn} className="home-page-forms d-flex flex-column justify-content-around w-100 p-4">
                 <p className="heading">Already have an account?</p>
                 <div>
@@ -107,9 +107,9 @@ const Home = () => {
                 </div>
                 <div>
                   <label htmlFor="passwordInput" className="form-label" hidden>Password</label>
-                  <input type="password" className="form-control mb-5 mb-sm-3" id="passwordInput" placeholder="password" required></input>
+                  <input type="password" className="form-control mb-0 mb-md-3" id="passwordInput" placeholder="password" required></input>
                 </div>
-                <button type="submit" className="btn mt-3" onSubmit={handleLogIn}>Log In</button>
+                <button type="submit" className="btn mt-4 mt-md-2 mt-lg-0" onSubmit={handleLogIn}>Log In</button>
                 <p className="form-message m-0 p-0">
                   {logInMessage}
                 </p>
