@@ -11,8 +11,10 @@ module Api
           }
         }
       else 
-        render json: { success: false }
-        puts @user.errors.to_yaml
+        @user.errors.full_messages.each do |message|
+          @errorMessage = message
+        end
+        render json: { success: false, error: @errorMessage }
       end
     end
 

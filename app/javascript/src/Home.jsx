@@ -21,7 +21,7 @@ const Home = () => {
     const password = $('#newPasswordInput').val();
     createUser(username, email, password, function (response) {
       if (response.success == false) {
-        setSignUpMessage("Error! Please try again");
+        setSignUpMessage(response.error);
       }
       else {
         setSignUpMessage("Success! Please log in");
