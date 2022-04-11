@@ -15,6 +15,7 @@ const Feed = () => {
   const [currentUser, setCurrentUser] = useState("");
   const [characters, setCharacters] = useState(140);
   const [tweetCount, setTweetCount] = useState(0);
+  const [imagePreview, setImagePreview] = useState("");
 
   //    map tweets to state
 
@@ -35,6 +36,7 @@ const Feed = () => {
       else {
         console.log('feed post', response);
         setErrorMessage("");
+        setImagePreview("");
         getTweets(listOfTweets);
         setNewTweet("");
         setCharacters(140);
@@ -42,6 +44,12 @@ const Feed = () => {
       }
     });
   };
+
+  const imageHandler = function (event) {
+    console.log(event.target.files);
+    var source = URL.createObjectURL(event.target.files[0]);
+    setImagePreview(source);
+  }
 
   const tweetInputHandler = function (event) {
     setNewTweet(event.target.value);
@@ -124,8 +132,8 @@ const Feed = () => {
               </textarea>
               <div className="text-end">
                 <p className="m-0 py-1 char-count">{characters}</p>
-                <label htmlFor="imageUpload" className="form-label">Upload Photo</label>
-                <input className="form-control" type="file" id="imageUpload"></input>
+                <label htmlFor="imageUpload" className="form-label tweet-image-upload fw-bold px-2">Upload Photo</label>
+                <input className="form-control form-control-sm" type="file" id="imageUpload" accept="image/*" hidden onChange={imageHandler}></input>
                 <button 
                   type="submit" 
                   className="btn btn-sm fw-bold px-3 tweet-btn" 
@@ -133,6 +141,9 @@ const Feed = () => {
                   disabled={characters == 140 || characters < 0}>
                   Tweet
                 </button>
+              </div>
+              <div className="text-end pt-2">
+                <img src={imagePreview} width="100"></img>
               </div>
             </form>
             <p>
@@ -150,7 +161,7 @@ const Feed = () => {
                     <a href={'/' + tweet.username} className="fw-light ps-1">@{tweet.username}</a>
                     <p className="d-inline date ps-1">{tweet.created_at}</p>
                     <p className="pt-3 fw-light">{tweet.message}</p>
-                    <img className="w-100 tweet-image" src={tweet.image}></img>
+                    <img className="w-100 pb-1 tweet-image" src={tweet.image}></img>
                     <button className="btn btn-sm d-flex ms-auto delete-btn" data-id={tweet.id} onClick={deleteTweetHandler}>Delete</button>
                   </div>
                 )
@@ -162,7 +173,7 @@ const Feed = () => {
                     <a href={'/' + tweet.username} className="fw-light ps-1">@{tweet.username}</a>
                     <p className="d-inline date ps-1">{tweet.created_at}</p>
                     <p className="pt-3 fw-light">{tweet.message}</p>
-                    <img className="w-100 tweet-image" src={tweet.image}></img>
+                    <img className="w-100 pb-1 tweet-image" src={tweet.image}></img>
                   </div>
                 )
               }

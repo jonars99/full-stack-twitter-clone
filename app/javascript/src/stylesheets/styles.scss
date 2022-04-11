@@ -210,6 +210,10 @@ body {
       border-top-left-radius: .8rem;
       border-top-right-radius: .8rem;
 
+      .tweet-image-upload:hover {
+        cursor: pointer;
+      }
+
       .tweet-btn {
         background-color: #2A9CEF;
         border-radius: 5rem;
