@@ -25,7 +25,6 @@ module Api
         render 'api/tweets/create'
       else 
         render json: { success: false }
-        puts @tweet.errors.to_yaml
       end
     end
 

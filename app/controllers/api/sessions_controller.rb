@@ -13,7 +13,6 @@ module Api
         render json: { success: true }
       else
         render json: { success: false }
-        puts @user.errors.to_yaml
       end
 
     end
@@ -22,8 +21,8 @@ module Api
       token = cookies.permanent.signed[:twitter_session_token]
       session = Session.find_by(token: token)
 
-      if session 
-        user = session.user 
+      if session
+        user = session.user
 
         render json: {
           authenticated: true,
