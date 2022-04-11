@@ -26,11 +26,14 @@ const Feed = () => {
 
   const postTweetHandler = function (event) {
     event.preventDefault();
-    postTweet(newTweet, function (response) {
+    var fileUpload = document.getElementById('imageUpload');
+    var photo = fileUpload.files[0];
+    postTweet(newTweet, photo, function (response) {
       if (response.success == false) {
         setErrorMessage("Sorry, there was an error posting your tweet. Please try again");
       }
       else {
+        console.log('feed post', response);
         setErrorMessage("");
         getTweets(listOfTweets);
         setNewTweet("");
@@ -121,6 +124,8 @@ const Feed = () => {
               </textarea>
               <div className="text-end">
                 <p className="m-0 py-1 char-count">{characters}</p>
+                <label htmlFor="imageUpload" className="form-label">Upload Photo</label>
+                <input className="form-control" type="file" id="imageUpload"></input>
                 <button 
                   type="submit" 
                   className="btn btn-sm fw-bold px-3 tweet-btn" 
@@ -145,6 +150,7 @@ const Feed = () => {
                     <a href={'/' + tweet.username} className="fw-light ps-1">@{tweet.username}</a>
                     <p className="d-inline date ps-1">{tweet.created_at}</p>
                     <p className="pt-3 fw-light">{tweet.message}</p>
+                    <img className="w-100 tweet-image" src={tweet.image}></img>
                     <button className="btn btn-sm d-flex ms-auto delete-btn" data-id={tweet.id} onClick={deleteTweetHandler}>Delete</button>
                   </div>
                 )
@@ -156,6 +162,7 @@ const Feed = () => {
                     <a href={'/' + tweet.username} className="fw-light ps-1">@{tweet.username}</a>
                     <p className="d-inline date ps-1">{tweet.created_at}</p>
                     <p className="pt-3 fw-light">{tweet.message}</p>
+                    <img className="w-100 tweet-image" src={tweet.image}></img>
                   </div>
                 )
               }

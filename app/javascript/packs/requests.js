@@ -113,16 +113,24 @@ export var getUsersTweets = function (username, callback) {
 
 //_______________Post a Tweet___________________
 
-export var postTweet = function (content, callback) {
+export var postTweet = function (content, photo, callback) {
+  var formData = new FormData();
+  if (content) {
+    formData.append('tweet[message]', content);
+  }
+  if (photo) {
+    formData.append('tweet[image]', photo);
+  }
   var request = {
     type: 'POST',
     url: 'api/tweets',
-    data: {
-      tweet: {
-        message: content
-      }
-    },
+    cache: false,
+    contentType: false,
+    processData: false,
+    xhrFields: { 'withCredentials': true },
+    data: formData,
     success: function (response) {
+      console.log('requests post', response);
       callback(response);
     }
   };

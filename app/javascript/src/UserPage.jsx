@@ -105,6 +105,7 @@ const UserPage = () => {
                     <a href={'/' + tweet.username} className="fw-light ps-1">@{tweet.username}</a>
                     <p className="d-inline date ps-1">{tweet.created_at}</p>
                     <p className="pt-3 fw-light">{tweet.message}</p>
+                    <img className="w-100 tweet-image" src={tweet.image}></img>
                     <button className="btn btn-sm d-flex ms-auto delete-btn" data-id={tweet.id} onClick={deleteTweetHandler}>Delete</button>
                   </div>
                 )
@@ -116,6 +117,7 @@ const UserPage = () => {
                     <a href={'/' + tweet.username} className="fw-light ps-1">@{tweet.username}</a>
                     <p className="d-inline date ps-1">{tweet.created_at}</p>
                     <p className="pt-3 fw-light">{tweet.message}</p>
+                    <img className="w-100 tweet-image" src={tweet.image}></img>
                   </div>
                 )
               }
