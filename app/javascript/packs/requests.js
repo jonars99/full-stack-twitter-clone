@@ -99,7 +99,12 @@ export var getUsersTweets = function (username, callback) {
     type: 'GET',
     url: '/api/users/' + username + '/tweets',
     success: function (response) {
-      callback(response);
+      if (response.error) {
+        window.location.replace('/feed');
+      }
+      else {
+        callback(response);
+      }
     }
   }
   $.ajax(request);

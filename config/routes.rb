@@ -20,5 +20,7 @@ Rails.application.routes.draw do
     delete '/sessions'   => 'sessions#destroy'
 
   end
+
+  get '*path' => redirect('/')
   
 end

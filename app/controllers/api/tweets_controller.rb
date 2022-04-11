@@ -12,7 +12,9 @@ module Api
       if user 
         @tweets = user.tweets.all.order(created_at: :desc)
         render 'api/tweets/index'
-      end      
+      else 
+        render json: { error: 'user does not exist' }
+      end
     end
 
     def create 
