@@ -130,7 +130,6 @@ export var postTweet = function (content, photo, callback) {
     xhrFields: { 'withCredentials': true },
     data: formData,
     success: function (response) {
-      console.log('requests post', response);
       callback(response);
     }
   };

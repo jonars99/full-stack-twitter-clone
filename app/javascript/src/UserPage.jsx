@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { getUsersTweets, authenticateUser, deleteTweet } from '../packs/requests';
 import Navbar from './Navbar';
+import './stylesheets/home.scss';
 import './stylesheets/styles.scss';
 import { getCurrentUser, countUsersTweets } from '../packs/utils';
 

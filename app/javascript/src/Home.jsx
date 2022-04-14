@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import { createUser, logInUser, authenticateUser } from '../packs/requests';
-import './stylesheets/styles';
+import './stylesheets/home.scss';
+import './stylesheets/styles.scss';
 import image from './images/pexels-humphrey-muleba-1647121.jpg';
 
 const Home = () => {

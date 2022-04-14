@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { getTweets, postTweet, deleteTweet, authenticateUser, getUsersTweets} from '../packs/requests';
 import Navbar from './Navbar';
-import './stylesheets/styles.scss'
+import './stylesheets/home.scss';
+import './stylesheets/styles.scss';
 import { getCurrentUser, countUsersTweets } from '../packs/utils';
 
 const Feed = () => {
@@ -34,7 +35,6 @@ const Feed = () => {
         setErrorMessage("Sorry, there was an error posting your tweet. Please try again");
       }
       else {
-        console.log('feed post', response);
         setErrorMessage("");
         setImagePreview("");
         getTweets(listOfTweets);
@@ -46,7 +46,6 @@ const Feed = () => {
   };
 
   const imageHandler = function (event) {
-    console.log(event.target.files);
     var source = URL.createObjectURL(event.target.files[0]);
     setImagePreview(source);
   }
