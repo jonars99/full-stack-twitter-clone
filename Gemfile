@@ -8,7 +8,7 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.7'
 # dotenv for environmantal variables
 gem 'dotenv-rails', groups: [:development, :test]
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+#gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 5.6'
 # Use SCSS for stylesheets
@@ -32,6 +32,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 # AWS S3
 gem 'aws-sdk', '~> 3.0'
+
+# PostGres
+gem 'pg', '~>1.3.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -62,5 +65,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :production do
   # postgres for heroku production environment
-  gem 'pg', '~>1.3.3'
+  gem 'pg'
 end
