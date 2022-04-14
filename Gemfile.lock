@@ -1389,7 +1389,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     thor (1.2.1)
     tilt (2.0.10)
     tzinfo (2.0.4)
@@ -1434,7 +1433,6 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   spring
-  sqlite3 (~> 1.4)
   tzinfo-data
   web-console (>= 4.1.0)
   webdrivers
