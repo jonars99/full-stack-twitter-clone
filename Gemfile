@@ -33,9 +33,6 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # AWS S3
 gem 'aws-sdk', '~> 3.0'
 
-# PostGres
-gem 'pg', '~>1.3.3'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -65,5 +62,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :production do
   # postgres for heroku production environment
-  gem 'pg'
+  gem 'pg', '~>1.3.3'
 end
