@@ -35,7 +35,6 @@ const Feed = () => {
         setErrorMessage("Sorry, there was an error posting your tweet. Please try again");
       }
       else {
-        console.log('feed post', response);
         setErrorMessage("");
         setImagePreview("");
         getTweets(listOfTweets);
@@ -47,7 +46,6 @@ const Feed = () => {
   };
 
   const imageHandler = function (event) {
-    console.log(event.target.files);
     var source = URL.createObjectURL(event.target.files[0]);
     setImagePreview(source);
   }
