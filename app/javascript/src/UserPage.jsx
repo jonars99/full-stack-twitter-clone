@@ -4,6 +4,7 @@ import { getUsersTweets, authenticateUser, deleteTweet } from '../packs/requests
 import Navbar from './Navbar';
 import './stylesheets/styles.scss';
 import { getCurrentUser, countUsersTweets } from '../packs/utils';
+import './stylesheets/home.scss';
 
 const UserPage = () => {
 
