@@ -8,7 +8,7 @@ gem 'rails', '~> 6.1.4', '>= 6.1.4.7'
 # dotenv for environmantal variables
 gem 'dotenv-rails', groups: [:development, :test]
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+#gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 5.6'
 # Use SCSS for stylesheets
