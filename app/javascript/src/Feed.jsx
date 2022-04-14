@@ -161,7 +161,9 @@ const Feed = () => {
                     <a href={'/' + tweet.username} className="fw-light ps-1">@{tweet.username}</a>
                     <p className="d-inline date ps-1">{tweet.created_at}</p>
                     <p className="pt-3 fw-light">{tweet.message}</p>
-                    <img className="w-100 pb-1 tweet-image" src={tweet.image}></img>
+                    <div className="img-wrapper px-md-4">
+                      <img className="pb-1 tweet-image" src={tweet.image}></img>
+                    </div>
                     <button className="btn btn-sm d-flex ms-auto delete-btn" data-id={tweet.id} onClick={deleteTweetHandler}>Delete</button>
                   </div>
                 )
@@ -173,7 +175,9 @@ const Feed = () => {
                     <a href={'/' + tweet.username} className="fw-light ps-1">@{tweet.username}</a>
                     <p className="d-inline date ps-1">{tweet.created_at}</p>
                     <p className="pt-3 fw-light">{tweet.message}</p>
-                    <img className="w-100 pb-1 tweet-image" src={tweet.image}></img>
+                    <div className="img-wrapper px-md-4">
+                      <img className="pb-1 tweet-image" src={tweet.image}></img>
+                    </div>
                   </div>
                 )
               }
