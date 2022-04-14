@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { getTweets, postTweet, deleteTweet, authenticateUser, getUsersTweets} from '../packs/requests';
 import Navbar from './Navbar';
-import './stylesheets/styles.scss'
+import './stylesheets/home.scss';
+import './stylesheets/styles.scss';
 import { getCurrentUser, countUsersTweets } from '../packs/utils';
-import './stylesheets/home.scss'
 
 const Feed = () => {
 
