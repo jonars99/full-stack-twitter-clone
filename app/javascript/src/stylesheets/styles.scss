@@ -290,6 +290,21 @@ body {
   }
 }
 
+// Footer
+
+footer {
+  letter-spacing: .8px;
+  font-size: x-small;
+  border-top: 2px solid #2c3139;
+
+  .social-links a {
+    font-size: small;
+    color: #fefefe;
+    margin-left: 13px;
+  }
+
+}
+
 // responsive design 
 
 @media all and (min-width: 992px) {

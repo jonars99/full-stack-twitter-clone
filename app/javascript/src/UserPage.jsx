@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import './stylesheets/home.scss';
 import './stylesheets/styles.scss';
 import { getCurrentUser, countUsersTweets } from '../packs/utils';
+import Footer from './Footer';
 
 const UserPage = () => {
 
@@ -45,7 +46,7 @@ const UserPage = () => {
   }, []);
 
   return (
-    <div id="top" className="container mb-5">
+    <div className="container mb-5">
       <Navbar />
       <div id="userFeed" className="container row mt-1">
 
@@ -142,6 +143,7 @@ const UserPage = () => {
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   )
 };

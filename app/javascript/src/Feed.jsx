@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import './stylesheets/home.scss';
 import './stylesheets/styles.scss';
 import { getCurrentUser, countUsersTweets } from '../packs/utils';
+import Footer from './Footer';
 
 const Feed = () => {
 
@@ -74,7 +75,7 @@ const Feed = () => {
   }, []);
 
   return(
-    <div id="top" className="container mb-5">
+    <div className="container mb-5">
       <Navbar />
       <div id="feed" className="container row mt-1">
 
@@ -196,7 +197,7 @@ const Feed = () => {
           </form>
         </div>
       </div>
-
+      <Footer />
     </div>
   )
 };
