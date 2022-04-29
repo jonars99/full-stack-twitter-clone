@@ -1,24 +1,22 @@
-# README
+# Full Stack Twitter Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Check it out -> [full-stack-twitter-jr](https://fs-twitter-jr.herokuapp.com)
+Built with **React**, **Ruby on Rails** and **Sass** as a full stack project during altcademy's web development course
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+![screenshot of Twitter Clone Project](twitter-project.png "screenshot of twitter clone")
 
-* System dependencies
+* User creation/sign up and log in
+* The user can post tweets to feed
+* Tweets can include a photo upload (AWS storage)
+* User authentication
+* The user can end the session (log out)
 
-* Configuration
+## Versions
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby 3.0.3
+* Rails 6.1.5
+* Node 12.22.0
+* Webpacker 5.4.3
+* Bootstrap 5
