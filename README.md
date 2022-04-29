@@ -15,6 +15,7 @@ Built with **React**, **Ruby on Rails** and **Sass** as a full stack project dur
 * Tweets can include a photo upload (AWS storage)
 * User authentication
 * The user can end the session (log out)
+* Responsive Layout - for mobile, tablet, laptop and desktop using Bootstrap breakpoints and CSS media queries
 
 ## Versions
 
