@@ -1,6 +1,7 @@
 # Full Stack Twitter Clone
 
-Check it out -> [full-stack-twitter-jr](https://fs-twitter-jr.herokuapp.com)
+Check it out -> [full-stack-twitter-jr](https://fs-twitter-jr.herokuapp.com)  
+
 Built with **React**, **Ruby on Rails** and **Sass** as a full stack project during altcademy's web development course, deployed to **Heroku**
 
 ## Features
