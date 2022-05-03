@@ -12,7 +12,6 @@ Built with **React**, **Ruby on Rails** and **Sass** as a full stack project dur
 
 * User creation/sign up and log in
 * The user can post tweets to feed
-* Tweets can include a photo upload (AWS storage)
 * User authentication
 * The user can end the session (log out)
 * Responsive Layout - for mobile, tablet, laptop and desktop using Bootstrap breakpoints and CSS media queries
