@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { getUsersTweets, authenticateUser, deleteTweet } from '../packs/requests';
+import { getUsersTweets, deleteTweet } from '../packs/requests';
 import Navbar from './Navbar';
 import './stylesheets/home.scss';
 import './stylesheets/styles.scss';
@@ -107,9 +107,9 @@ const UserPage = () => {
                     <a href={'/' + tweet.username} className="fw-light ps-1">@{tweet.username}</a>
                     <p className="d-inline date ps-1">{tweet.created_at}</p>
                     <p className="pt-3 fw-light">{tweet.message}</p>
-                    <div className="img-wrapper px-md-4">
+{/*                     <div className="img-wrapper px-md-4">
                       <img className="pb-1 tweet-image" src={tweet.image}></img>
-                    </div>
+                    </div> */}
                     <button className="btn btn-sm d-flex ms-auto delete-btn" data-id={tweet.id} onClick={deleteTweetHandler}>Delete</button>
                   </div>
                 )
@@ -121,9 +121,9 @@ const UserPage = () => {
                     <a href={'/' + tweet.username} className="fw-light ps-1">@{tweet.username}</a>
                     <p className="d-inline date ps-1">{tweet.created_at}</p>
                     <p className="pt-3 fw-light">{tweet.message}</p>
-                    <div className="img-wrapper px-md-4">
+{/*                     <div className="img-wrapper px-md-4">
                       <img className="pb-1 tweet-image" src={tweet.image}></img>
-                    </div>
+                    </div> */}
                   </div>
                 )
               }
