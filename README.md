@@ -11,10 +11,10 @@ Built with **React**, **Ruby on Rails** and **Sass** as a full stack project dur
 ![screenshot of Twitter Clone Project](twitter-project.png "screenshot of twitter clone")
 
 * User creation/sign up and log in
-* The user can post tweets to feed
+* The user can **post tweets** to feed
 * User authentication
 * The user can end the session (log out)
-* Responsive Layout - for mobile, tablet, laptop and desktop using Bootstrap breakpoints and CSS media queries
+* **Responsive** Layout - using Bootstrap breakpoints and CSS media queries
 
 ## Versions
 
