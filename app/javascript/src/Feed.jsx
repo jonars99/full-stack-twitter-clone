@@ -46,10 +46,10 @@ const Feed = () => {
     });
   };
 
-/*   const imageHandler = function (event) {
+  const imageHandler = function (event) {
     var source = URL.createObjectURL(event.target.files[0]);
     setImagePreview(source);
-  } */
+  };
 
   const tweetInputHandler = function (event) {
     setNewTweet(event.target.value);
@@ -132,8 +132,8 @@ const Feed = () => {
               </textarea>
               <div className="text-end">
                 <p className="m-0 py-1 char-count">{characters}</p>
-                <label htmlFor="imageUpload" className="form-label tweet-image-upload fw-bold px-2 d-none">Upload Photo</label>
-                <input className="form-control form-control-sm" type="file" id="imageUpload" accept="image/*" hidden /* onChange={imageHandler} */></input>
+                <label htmlFor="imageUpload" className="form-label tweet-image-upload fw-bold px-2">Upload Photo</label>
+                <input className="form-control form-control-sm" type="file" id="imageUpload" accept="image/*" hidden onChange={imageHandler}></input>
                 <button 
                   type="submit" 
                   className="btn btn-sm fw-bold px-3 tweet-btn" 
@@ -161,9 +161,9 @@ const Feed = () => {
                     <a href={'/' + tweet.username} className="fw-light ps-1">@{tweet.username}</a>
                     <p className="d-inline date ps-1">{tweet.created_at}</p>
                     <p className="pt-3 fw-light">{tweet.message}</p>
-{/*                     <div className="img-wrapper px-md-4">
+                    <div className="img-wrapper px-md-4">
                       <img className="pb-1 tweet-image" src={tweet.image}></img>
-                    </div> */}
+                    </div>
                     <button className="btn btn-sm d-flex ms-auto delete-btn" data-id={tweet.id} onClick={deleteTweetHandler}>Delete</button>
                   </div>
                 )
@@ -175,9 +175,9 @@ const Feed = () => {
                     <a href={'/' + tweet.username} className="fw-light ps-1">@{tweet.username}</a>
                     <p className="d-inline date ps-1">{tweet.created_at}</p>
                     <p className="pt-3 fw-light">{tweet.message}</p>
-{/*                     <div className="img-wrapper px-md-4">
+                    <div className="img-wrapper px-md-4">
                       <img className="pb-1 tweet-image" src={tweet.image}></img>
-                    </div> */}
+                    </div>
                   </div>
                 )
               }
